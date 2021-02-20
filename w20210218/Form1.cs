@@ -43,6 +43,7 @@ namespace w20210218
         {
             InitializeComponent();
             InitialzeChart(3);
+            num = 3.ToString();
         }
 
         double x1 = 1;
@@ -55,15 +56,16 @@ namespace w20210218
             x1 = x1 + 1;
             n = n + 0.2;
             Console.WriteLine(x1 + "=" + n);
-            for (int i = 0; i < dicData.Count; i++)
+            for (int i = 1; i <= number; i++)
             {
-
+                dicData[i].Enqueue(pointXY);
+                ShowChart(dicChart[i], dicData[i]);
             }
-            dicData[1].Enqueue(pointXY);
-            
 
-            //ShowChart(dicChart[1], dicData[1]);
-           
+
+
+
+
 
         }
 
@@ -77,7 +79,7 @@ namespace w20210218
             List<string> list = new List<string>();
 
             chart.Series[0].Values.Clear();
-           
+
 
 
             for (int i = 0; i < que.Count; i++)
@@ -88,13 +90,9 @@ namespace w20210218
 
                 LiveCharts.Wpf.Axis ax = new LiveCharts.Wpf.Axis();
                 Console.WriteLine(point.X + "=" + point.Y);
-                
+
                 list.Add(point.X.ToString());
                 ax.Labels = list;
-
-
-
-
 
                 chart.AxisX.Clear();
                 chart.AxisX.Add(ax);
@@ -110,12 +108,15 @@ namespace w20210218
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            for (int i = 1; i <= number; i++)
+            {
+                dicData.Add(i, new Queue<PointXY>());
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             //dicData[1].Clear();
             //for (int i = 0; i < 20; i++)
             //{

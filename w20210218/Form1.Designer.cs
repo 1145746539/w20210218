@@ -106,6 +106,7 @@ namespace w20210218
                 this.Controls.Remove(dicChart[item]);
             }
             dicChart.Clear();
+
             dicWatch.Clear();
 
             int width = this.Size.Width-20; //留下20的空白地
