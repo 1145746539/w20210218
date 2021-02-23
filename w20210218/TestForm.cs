@@ -18,6 +18,7 @@ namespace w20210218
         /// </summary>
         List<List<CartesianChart>> ListChart = new List<List<CartesianChart>>();
         public TestForm ChartForm;
+        Timer UpdataTimer = new Timer();
         public TestForm()
         {
             ChartForm = this;
@@ -25,6 +26,16 @@ namespace w20210218
             InitializeComponent();
             CreateChart(3);
             CheckForIllegalCrossThreadCalls = false;
+            InitControllers();
+        }
+
+
+        /// <summary>
+        /// 其他控件的初始化
+        /// </summary>
+        private void InitControllers()
+        {
+        
         }
         /// <summary>
         /// 在主界面生成图表
@@ -88,7 +99,7 @@ namespace w20210218
                     Dock = DockStyle.Top,
                     Name = "ChartPanel" + i,
                     BorderStyle = BorderStyle.FixedSingle,
-                    BackColor = Color.FromArgb(123, 123, 123),
+                    BackColor = Color.FromArgb(153, 153, 153),
                     Height = (ChartForm.Height) / 3
                 };
                 ListChartPanels.Add(panel_chart);
@@ -114,6 +125,8 @@ namespace w20210218
             this.Controls.Add(Panel_MainMenu);
 
         }
+
+        
     }
 
 
